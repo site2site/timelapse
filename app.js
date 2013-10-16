@@ -23,7 +23,7 @@ sb.addSubscribe("start", "boolean");	// subscription for starting timelapse
 sb.addSubscribe("stop", "boolean");		// subscription for starting timelapse
 
 sb.addPublish("src", "string", "");		// publish image url for handshake
-sb.addPublish("image", "image");		// publish the serialized binary image data
+sb.addPublish("image", "binary.png");		// publish the serialized binary image data
 
 
 sb.onBooleanMessage = onBooleanMessage;	
@@ -64,7 +64,7 @@ function onOpen() {
 			var base64data = data.toString('base64');
 			console.log('sending base 64 with length' + base64data.length);
 
-			sb.send("image", "image", base64data);
+			sb.send("image", "binary.png", base64data);
 		});
 	});
 
