@@ -1,0 +1,17 @@
+{
+    "name": "timelapse",
+    "description": "Site to Site Raspberry Pi camera module to connect to Spacebrew",
+    "version": "0.0.1",
+    "author": {
+        "name": "Christina Badal <christinabadal@gmail.com>",
+        "email": "christinabadal@gmail.com"
+    },
+    "dependencies": {
+        "ws": "*",
+        "colors": "*",
+        "raspicam": "*"
+    },
+    "engines": {
+        "node": ">=0.10.0"
+    }
+}
