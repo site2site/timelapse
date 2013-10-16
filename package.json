@@ -11,6 +11,9 @@
         "colors": "*",
         "raspicam": "*"
     },
+    "contributors": [
+        { "name": "Troy Conrad Therrien", "email": "<troyth@gmail.com>" },
+    ],
     "engines": {
         "node": ">=0.10.0"
     }
