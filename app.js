@@ -39,6 +39,16 @@ sb.connect();
 function onOpen() {
 	console.log( "Connected through Spacebrew as: " + sb.name() + "." );
 
+	setTimeout(function(){
+		fs.readFile(image_path + "image_000003.png", function(err, data) {
+			var base64data = data.toString('base64');
+			console.log('sending base 64 with length' + base64data.length);
+
+			sb.send("image", "binary.png", base64data);
+		});
+	}, 3000);
+		
+
 	// initialize RaspiCam timelapse
 	camera = new RaspiCam({
 		mode: "timelapse",
