@@ -132,8 +132,13 @@
 		function onStringMessage( name, value ){
 			console.log("[onStringMessage] string message received ", value);
 			
-			if(name == "src"){
-				$("#photo").attr("src", value);
+			switch(name){
+				case "src":
+					$("#source").attr("src", value);
+					break;
+				case "out":
+					$("#output").attr("src", value);
+					break;
 			}
 		}
 
@@ -141,15 +146,21 @@
 	</head>
 
 	<body>
-		<h1>Use the buttons below to control the timelapse module</h1>
-		<h3 id="numclicks"></h3>
-		<a class="button" id="start">Start Timelapse</a>
-		<a class="button" id="stop">Stop Timelapse</a>
-		<a class="button" id="test">Test Binary Transfer</a>
-		<img id="photo" src="">
+		<div>
+			<h1>Use the buttons below to control the timelapse module</h1>
+			<h3 id="numclicks"></h3>
+			<a class="button" id="start">Start Timelapse</a>
+			<a class="button" id="stop">Stop Timelapse</a>
+			<a class="button" id="test">Test Binary Transfer</a>
 
-		</br></br>
-		<div id="name">Trying to connect</div>
+
+			</br></br>
+			<div id="name">Trying to connect</div>
+		</div>
+		<div>
+			<img id="source" src="">
+			<img id="output" src="">
+		</div>
 	</body>
 
 </html>
