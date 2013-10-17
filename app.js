@@ -24,7 +24,7 @@ sb.addSubscribe("stop", "boolean");		// subscription for starting timelapse
 sb.addSubscribe("test", "boolean");		// subscription for starting timelapse
 
 
-sb.addPublish("src", "string", "");		// publish image url for handshake
+//sb.addPublish("src", "string", "");		// publish image url for handshake
 sb.addPublish("image", "binary.png");		// publish the serialized binary image data
 
 
@@ -60,7 +60,7 @@ function onOpen() {
 		console.log("timelapse image captured with filename: " + filename);
 
 		//send the url to the image to be used as a src in client apps
-		sb.send("src", "string", image_path + filename);
+		//sb.send("src", "string", image_path + filename);
 	});
 
 	camera.on("data", function( err, timestamp, filename ){
