@@ -46,6 +46,8 @@ function onOpen() {
 		mode: "timelapse",
 		output: image_path + "image_%06d.png", // image_000001.jpg, image_000002.jpg,...
 		encoding: "png",
+		width: 640,
+		height: 480,
 		timelapse: 10000, // take a picture every 3 seconds
 		timeout: 86400000 // stop after 24 hours 
 	});
