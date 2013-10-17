@@ -39,6 +39,7 @@
 			sb.addPublish( "stop", "boolean", "false" );
 			sb.addPublish( "test", "boolean", "false" );
 			sb.addSubscribe( "src", "string" );
+			sb.addSubscribe( "out", "string" );
 
 			// override Spacebrew events - this is how you catch events coming from Spacebrew
 			sb.onStringMessage = onStringMessage;
