@@ -21,6 +21,8 @@ sb.addSubscribe("config", "boolean");	// subscription for config handshake
 
 sb.addSubscribe("start", "boolean");	// subscription for starting timelapse
 sb.addSubscribe("stop", "boolean");		// subscription for starting timelapse
+sb.addSubscribe("test", "boolean");		// subscription for starting timelapse
+
 
 sb.addPublish("src", "string", "");		// publish image url for handshake
 sb.addPublish("image", "binary.png");		// publish the serialized binary image data
@@ -38,16 +40,6 @@ sb.connect();
  */
 function onOpen() {
 	console.log( "Connected through Spacebrew as: " + sb.name() + "." );
-
-	setTimeout(function(){
-		fs.readFile(image_path + "image_000003.png", function(err, data) {
-			var base64data = data.toString('base64');
-			console.log('sending base 64 with length' + base64data.length);
-
-			sb.send("image", "binary.png", base64data);
-		});
-	}, 3000);
-		
 
 	// initialize RaspiCam timelapse
 	camera = new RaspiCam({
@@ -137,5 +129,14 @@ function onBooleanMessage( name, value ){
 				camera.stop();
 			}
 			break;
+		case "test":
+			if(value == true){
+				fs.readFile(image_path + "image_000003.png", function(err, data) {
+					var base64data = data.toString('base64');
+					console.log('sending base 64 with length' + base64data.length);
+
+					sb.send("image", "binary.png", base64data);
+				});
+			}
 	}
 }

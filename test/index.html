@@ -37,6 +37,7 @@
 			// configure the publication and subscription feeds
 			sb.addPublish( "start", "boolean", "false" );
 			sb.addPublish( "stop", "boolean", "false" );
+			sb.addPublish( "test", "boolean", "false" );
 			sb.addSubscribe( "src", "string" );
 
 			// override Spacebrew events - this is how you catch events coming from Spacebrew
@@ -52,6 +53,9 @@
 
 			$("#stop").on("mousedown", stopPress);
 			$("#stop").on("mouseup", stopRelease);
+
+			$("#test").on("mousedown", testPress);
+			$("#test").on("mouseup", testRelease);
 		}	
 
 		/**
@@ -102,6 +106,24 @@
 		}
 
 		/**
+	     * Function that is called whenever the button is pressed.  
+	     * @param  {Event object} evt Holds information about the button press event
+	     */
+		function testPress (evt){
+		      	console.log("[onButtonPress] stop button has been pressed"); 
+	        sb.send("test", "boolean", "true");
+		}
+
+		/**
+	     * Function that is called whenever the button is released.  
+	     * @param  {Event object} evt Holds information about the button press event
+	     */
+		function testRelease (evt){
+	      	console.log("[onButtonRelease] stop button has been released"); 
+	        sb.send("test", "boolean", "false");
+		}
+
+		/**
 		 * onStringMessage Function that is called whenever new spacebrew string messages are received.
 		 *          It accepts two parameters:
 		 * @param  {String} name    Holds name of the subscription feed channel
@@ -123,6 +145,7 @@
 		<h3 id="numclicks"></h3>
 		<a class="button" id="start">Start Timelapse</a>
 		<a class="button" id="stop">Stop Timelapse</a>
+		<a class="button" id="test">Test Binary Transfer</a>
 		<img id="photo" src="">
 
 		</br></br>
