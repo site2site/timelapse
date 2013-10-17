@@ -48,7 +48,7 @@ function onOpen() {
 		encoding: "png",
 		width: 640,
 		height: 480,
-		timelapse: 10000, // take a picture every 3 seconds
+		timelapse: 3000, // take a picture every x seconds
 		timeout: 86400000 // stop after 24 hours 
 	});
 
@@ -134,7 +134,7 @@ function onBooleanMessage( name, value ){
 		case "test":
 			if(value == true){
 				console.log("calling test");
-				fs.readFile(image_path + "image_000003.png", function(err, data) {
+				fs.readFile(image_path + "image_000007.png", function(err, data) {
 					var base64data = data.toString('base64');
 					console.log('sending base 64 with length' + base64data.length);
 
