@@ -135,9 +135,11 @@
 			switch(name){
 				case "src":
 					$("#source").attr("src", value);
+					console.log('received source with src: '+ value);
 					break;
 				case "out":
 					$("#output").attr("src", value);
+					console.log('received output with src: '+ value);
 					break;
 			}
 		}
