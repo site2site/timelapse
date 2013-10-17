@@ -1,6 +1,6 @@
 {
   "name": "raspicam",
   "description": "Raspberry Pi camera",
-  "server": "spacebrew.sitetosite.co",
+  "server": "server.sitetosite.co",
   "location": "Studio-X NYC"
 }
