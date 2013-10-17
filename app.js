@@ -131,6 +131,7 @@ function onBooleanMessage( name, value ){
 			break;
 		case "test":
 			if(value == true){
+				console.log("calling test");
 				fs.readFile(image_path + "image_000003.png", function(err, data) {
 					var base64data = data.toString('base64');
 					console.log('sending base 64 with length' + base64data.length);
