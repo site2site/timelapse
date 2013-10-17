@@ -15,8 +15,8 @@ sb = new Spacebrew.Client( config.server, config.name, config.description );  //
 
 
 // create the spacebrew subscription channels
-sb.addPublish("config", "string", "");	// publish config for handshake
-sb.addSubscribe("config", "boolean");	// subscription for config handshake
+//sb.addPublish("config", "string", "");	// publish config for handshake
+//sb.addSubscribe("config", "boolean");	// subscription for config handshake
 
 
 sb.addSubscribe("start", "boolean");	// subscription for starting timelapse
