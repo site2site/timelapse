@@ -48,7 +48,7 @@ function onOpen() {
 		encoding: "png",
 		width: 640,
 		height: 480,
-		timelapse: 5000, // take a picture every x seconds
+		timelapse: 30000, // take a picture every x seconds
 		timeout: 86400000 // stop after 24 hours 
 	});
 
