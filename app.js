@@ -58,15 +58,17 @@ function onOpen() {
 
 	camera.on("read", function( err, timestamp, filename ){
 		console.log("timelapse image captured with filename: " + filename);
+		if(filename.charAt(filename.length-1) != "~"){
 
-		setTimeout(function(){
-			fs.readFile(image_path + filename, function(err, data) {
-				var base64data = data.toString('base64');
-				console.log('sending base 64 with length' + base64data.length);
+			setTimeout(function(){
+				fs.readFile(image_path + filename, function(err, data) {
+					var base64data = data.toString('base64');
+					console.log('sending base 64 with length' + base64data.length);
 
-				sb.send("image", "binary.png", base64data);
-			});
-		}, 2000);
+					sb.send("image", "binary.png", base64data);
+				});
+			}, 2000);
+		}
 			
 	});
 
