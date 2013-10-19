@@ -50,7 +50,7 @@ function onOpen() {
 		encoding: "png",
 		width: 640,
 		height: 480,
-		timelapse: 10000, // take a picture every x seconds
+		timelapse: 5000, // take a picture every x seconds
 		timeout: 86400000 // stop after 24 hours 
 	});
 
@@ -144,8 +144,11 @@ function onBooleanMessage( name, value ){
 				timestamp = new Date().getTime();
 
 			    fs.mkdir(image_path + timestamp, function(){
-			    	camera.set("output", image_path + timestamp + "/" + "image_%06d.png")
+			    	console.log("setting output: " + image_path + timestamp + "/" + "image_%06d.png");
+			    	camera.set("output", image_path + timestamp + "/" + "image_%06d.png");
 
+			    	console.log("output set as: " + camera.get("output"));
+			    	console.log("starting camera....");
 			    	// start timelapse
 					camera.start();
 			    });
