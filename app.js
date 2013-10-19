@@ -25,7 +25,7 @@ sb.addSubscribe("test", "boolean");		// subscription for starting timelapse
 
 
 //sb.addPublish("src", "string", "");		// publish image url for handshake
-sb.addPublish("image", "binary.png");		// publish the serialized binary image data
+sb.addPublish("image", "binary");		// publish the serialized binary image data
 
 
 sb.onBooleanMessage = onBooleanMessage;	
@@ -65,7 +65,25 @@ function onOpen() {
 					var base64data = data.toString('base64');
 					console.log('sending base 64 with length' + base64data.length);
 
-					sb.send("image", "binary.png", base64data);
+					var message = {
+						filename: filename,
+						binary: base64data,
+						encoding: "png"
+					};
+
+					sb.send("image", "binary", message.toString('base64'));
+
+					//delete file after 20s
+					setTimeout(function(){
+						fs.unlink(image_path + filename, function (err) {
+							if (err){
+								console.log("Error attempting to delete: " + image_path + filename );
+								return false;
+							}
+							console.log("Deleted: " + image_path + filename );
+
+						});
+					}, 20000);
 				});
 			}, 2000);
 		}
