@@ -50,6 +50,7 @@ function onOpen() {
 		output: image_path + sequence_timestamp + "/" + "image_%06d.png", // image_000001.jpg, image_000002.jpg,...
 		encoding: "png",
 		vflip: true,
+		hflip:true,
 		width: 640,
 		height: 480,
 		timelapse: 5000, // take a picture every x seconds
