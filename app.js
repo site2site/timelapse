@@ -3,7 +3,7 @@ var RaspiCam = require("raspicam"),
 	Spacebrew = require('./sb-1.3.0').Spacebrew,
 	sb,
 	camera,
-	start_timestamp,
+	sequence_timestamp,
 	config = require("./machine"),
 	fs = require("fs");
 
@@ -41,13 +41,13 @@ sb.connect();
 function onOpen() {
 	console.log( "Connected through Spacebrew as: " + sb.name() + "." );
 
-	start_timestamp = new Date().getTime();//temporary timestamp
-	console.log("connected at: " + start_timestamp);
+	sequence_timestamp = new Date().getTime();//temporary timestamp
+	console.log("connected at: " + sequence_timestamp);
 
 	// initialize RaspiCam timelapse
 	camera = new RaspiCam({
 		mode: "timelapse",
-		output: image_path + start_timestamp + "/" + "image_%06d.png", // image_000001.jpg, image_000002.jpg,...
+		output: image_path + sequence_timestamp + "/" + "image_%06d.png", // image_000001.jpg, image_000002.jpg,...
 		encoding: "png",
 		width: 640,
 		height: 480,
@@ -64,15 +64,15 @@ function onOpen() {
 		if(filename.charAt(filename.length-1) != "~"){
 
 			setTimeout(function(){
-				console.log("calling readfile with: " + image_path + start_timestamp + "/" + filename);
-				fs.readFile(image_path + start_timestamp + "/" + filename, function(err, data) {
+				console.log("calling readfile with: " + image_path + sequence_timestamp + "/" + filename);
+				fs.readFile(image_path + sequence_timestamp + "/" + filename, function(err, data) {
 					var base64data = data.toString('base64');
 					console.log('sending base 64 with length' + base64data.length);
 
 					var message = { 
 						filename: filename,
-						sequence_timestamp: start_timestamp,
-						timestamp: new Data().getTime(),
+						sequence_timestamp: sequence_timestamp,
+						timestamp: new Date().getTime(),
 						binary: base64data,
 						encoding: "png"
 					};
@@ -143,11 +143,11 @@ function onBooleanMessage( name, value ){
 			      String("starting camera").magenta
 			    ].join(" "));
 
-				start_timestamp = new Date().getTime();
+				sequence_timestamp = new Date().getTime();
 
-			    fs.mkdir(image_path + start_timestamp, function(){
-			    	console.log("setting output: " + image_path + start_timestamp + "/" + "image_%06d.png");
-			    	camera.set("output", image_path + start_timestamp + "/" + "image_%06d.png");
+			    fs.mkdir(image_path + sequence_timestamp, function(){
+			    	console.log("setting output: " + image_path + sequence_timestamp + "/" + "image_%06d.png");
+			    	camera.set("output", image_path + sequence_timestamp + "/" + "image_%06d.png");
 
 			    	console.log("output set as: " + camera.get("output"));
 			    	console.log("starting camera....");
