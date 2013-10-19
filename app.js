@@ -21,7 +21,6 @@ sb = new Spacebrew.Client( config.server, config.name, config.description );  //
 
 sb.addSubscribe("start", "boolean");	// subscription for starting timelapse
 sb.addSubscribe("stop", "boolean");		// subscription for starting timelapse
-sb.addSubscribe("test", "boolean");		// subscription for starting timelapse
 
 
 //sb.addPublish("src", "string", "");		// publish image url for handshake
@@ -48,7 +47,7 @@ function onOpen() {
 		encoding: "png",
 		width: 640,
 		height: 480,
-		timelapse: 30000, // take a picture every x seconds
+		timelapse: 10000, // take a picture every x seconds
 		timeout: 86400000 // stop after 24 hours 
 	});
 
