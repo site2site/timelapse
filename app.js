@@ -71,7 +71,10 @@ function onOpen() {
 						encoding: "png"
 					};
 
-					sb.send("image", "binary", message.toString('base64'));
+					console.log('sending image with filename: ' + message.filename );
+
+					sb.send("image", "binary", JSON.stringify( message ) );
+					//sb.send("image", "binary", message);
 
 					//delete file after 20s
 					setTimeout(function(){
@@ -83,7 +86,7 @@ function onOpen() {
 							console.log("Deleted: " + image_path + filename );
 
 						});
-					}, 20000);
+					}, 40000);
 				});
 			}, 2000);
 		}
