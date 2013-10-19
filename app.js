@@ -63,11 +63,12 @@ function onOpen() {
 		if(filename.charAt(filename.length-1) != "~"){
 
 			setTimeout(function(){
+				console.log("calling readfile with: " + image_path + timestamp + "/" + filename);
 				fs.readFile(image_path + timestamp + "/" + filename, function(err, data) {
 					var base64data = data.toString('base64');
 					console.log('sending base 64 with length' + base64data.length);
 
-					var message = {
+					var message = { 
 						filename: filename,
 						sequence_timestamp: timestamp,
 						timestamp: new Data().getTime(),
