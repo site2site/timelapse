@@ -3,17 +3,14 @@
     "description": "Site to Site Raspberry Pi camera module to connect to Spacebrew",
     "version": "0.0.1",
     "author": {
-        "name": "Christina Badal <christinabadal@gmail.com>",
-        "email": "christinabadal@gmail.com"
+        "name": "Troy Conrad Therrien <troyth@gmail.com>",
+        "email": "troyth@gmail.com"
     },
     "dependencies": {
         "ws": "*",
         "colors": "*",
         "raspicam": "*"
     },
-    "contributors": [
-        { "name": "Troy Conrad Therrien", "email": "<troyth@gmail.com>" }
-    ],
     "engines": {
         "node": ">=0.10.0"
     }
